@@ -21,21 +21,40 @@
             <h1 class="display-4">Weather Dashboard</h1>
         </div>
     </div>
-    <!--Main container that will have two columns.-->
-    <div class="container-fluid">
-        <!--First column has search bar and area for local storage results to populate-->
+    <!--Main container-->
+    <div class="container container-fluid">
         <div class="row">
-            <div class="col">
-              1 of 2
+            <div class="column col-sm-4" id="citySearchColumn"> <!--left city search column-->
+                <div class="row" id="searchBarRow">
+                    <h6>Search for a city:</h6>
+                    <form class="form-inline">
+                        <input class="form-control" id="location" placeholder="search" type="search">
+                        <button class="btn btn-outline-secondary" id="searchButton" type="button"></button>
+                    </form>
+                </div> 
+                <div class="row" id="historyRow">
+                    <div id="buttons-view"></div>
+                    <button class="btn btn-outline-secondary" id="clearHistory" type="button"></button>
+                </div>    
             </div>
-            <div class="col">
-              2 of 2
+            <div class="column col-sm-8" id="weatherResultsColumn">  <!--right results column-->
+                <div class="row" id="currentWeatherRow">
+                    <div id="borderBox">
+                        <div class="city"></div>
+                        <div class="time"></div>
+                        <div class="icon"></div>
+                        <div class="temp"></div>
+                        <div class="humidty"></div>
+                        <div class="wind"></div>
+                        <div class="uvIndex"><p id="uvValue"></p></div>
+                    </div>
+                </div>
+                <div class="row" id="fiveDayForecastContainer"></div>
+                </div>
             </div>
           </div>
-
     </div>
 
-    <!--Second column displays search results, current weather and five day forecast-->
 
     <!--Link to JS, Popper & Bootstrap CDN -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
