@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Weather-Dashboard</title>
-    <!--Link to favicon-->
-    <link rel="shortcut icon" href="https://deadandcompany.com/clients/dead-and-company/img/favicon.ico">
     <!--Link to Bootstrap CDN-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!--Link to style.css-->
@@ -28,7 +26,7 @@
                 <div class="row" id="searchBarRow">
                     <h6>Search for a city:</h6>
                     <form class="form-inline">
-                        <input class="form-control" id="location" placeholder="search" type="search">
+                        <input class="form-control" id="city" placeholder="search" type="text">
                         <button class="btn btn-outline-secondary" id="searchButton" type="button"></button>
                     </form>
                 </div> 
@@ -39,14 +37,14 @@
             </div>
             <div class="column col-sm-8" id="weatherResultsColumn">  <!--right results column-->
                 <div class="row" id="currentWeatherRow">
-                    <div id="borderBox">
-                        <div class="city"></div>
-                        <div class="time"></div>
-                        <div class="icon"></div>
-                        <div class="temp"></div>
-                        <div class="humidty"></div>
-                        <div class="wind"></div>
-                        <div class="uvIndex"><p id="uvValue"></p></div>
+                    <div class="resultsBox">
+                        <div id="cityName"></div>
+                        <div id="time"></div>
+                        <div id="icon"></div>
+                        <div id="temp"></div>
+                        <div id="humidity"></div>
+                        <div id="wind"></div>
+                        <div id="uvIndex"></div>
                     </div>
                 </div>
                 <div class="row" id="fiveDayForecastContainer"></div>
