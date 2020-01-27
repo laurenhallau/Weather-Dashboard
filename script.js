@@ -18,6 +18,9 @@ $(document).ready(function(){
           console.log(cityName);
           localStorage.setItem(cityName, historyRow);
 
+          var time = (response.timezone);
+          $("#time").html(time);
+          
           var icon = (response.weather[0].icon);
           $("#icon").html("<img src='http://openweathermap.org/img/w/" + icon + ".png' alt='Icon depicting current weather.'>")
           

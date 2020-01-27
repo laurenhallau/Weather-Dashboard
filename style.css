@@ -7,3 +7,27 @@
 #city {
     font-family: 'M PLUS 1P' sans-serif;
 }
+
+#weatherResultsColumn {
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgrey;
+    height: 200px;
+    width: 50%;
+    font-family: 'M PLUS 1p', sans-serif;
+    text-align: center;
+    font-size: 24px;
+    
+}
+
+#citySearchColumn {
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgrey;
+    height: 200px;
+    width: 50%;
+    font-family: 'M PLUS 1p', sans-serif;
+    text-align: center;
+    font-size: 18px;
+
+}
