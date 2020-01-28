@@ -17,38 +17,29 @@
     <div class="jumbotron jumbotron-fluid" id="weatherHeader">
         <div class="container">
             <h1 class="display-4">Weather Dashboard</h1>
+            <form class="form-inline">
+                <input class="form-control" id="city" placeholder="search" type="text">
+                <button class="btn btn-outline-secondary" id="searchButton" type="button" >Search</button>
+            </form>
         </div>
     </div>
     <!--Main container-->
     <div class="container container-fluid">
         <div class="row">
-            <div class="column col-sm-4" id="citySearchColumn"> <!--left city search column-->
-                <div class="row" id="searchBarRow">
-                    <h6>Search for a city:</h6>
-                    <form class="form-inline">
-                        <input class="form-control" id="city" placeholder="search" type="text">
-                        <button class="btn btn-outline-secondary" id="searchButton" type="button" >Search</button>
-                    </form>
-                </div> 
-                <div class="row" id="historyRow">
-                    <div id="buttons-view"></div>
-                    <button class="btn btn-outline-secondary" id="clearHistory" type="button">Clear History</button>
-                </div>    
-            </div>
-            <div class="column col-sm-8" id="weatherResultsColumn">  <!--right results column-->
-                <div class="row" id="currentWeatherRow">
-                    <div class="resultsBox">
-                        <div id="cityName"></div>
-                        <div id="icon"></div>
-                        <div id="temp"></div>
-                        <div id="humidity"></div>
-                        <div id="wind"></div>
-                    </div>
-                </div>
-                <div class="row" id="fiveDayForecastContainer"></div>
+            <div class="column col-lg-4" id="citySearchColumn">
+                <ul class="listCityHistory"></ul>
+            </div>  <!--left city search column-->
+        </div>
+            <div class="column col-lg-8" id="weatherResultsColumn">  <!--right results column-->
+                    <div id="cityName"></div>
+                    <div id="icon"></div>
+                    <div id="temp"></div>
+                    <div id="humidity"></div>
+                    <div id="wind"></div>
                 </div>
             </div>
-          </div>
+        </div>
+        <div class="row" id="fiveDayForecastContainer"></div>
     </div>
 
 
