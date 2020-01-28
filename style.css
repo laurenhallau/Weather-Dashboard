@@ -24,14 +24,7 @@
     text-align: center;
 }
 
-#citySearchColumn {
-    border-style: solid;
-    border-width: 1px;
-    border-color: lightgrey;
-    height: 200px;
-    width: 50%;
-    font-family: 'M PLUS 1p', sans-serif;
-    text-align: center;
-    font-size: 18px;
+.form-control {
+    margin-left: 200px;
 
 }
