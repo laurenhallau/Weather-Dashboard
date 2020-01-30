@@ -17,6 +17,7 @@
     font-family: 'M PLUS 1p', sans-serif;
     text-align: center;
     font-size: 24px;
+    float: right;
     
 }
 
@@ -24,7 +25,13 @@
     text-align: center;
 }
 
-.form-control {
-    margin-left: 200px;
+.form-input {
+    display: inline-block;
+}
 
+#cityHistoryColumn {
+    float: left;
+}
+#fiveDayForecast {
+    float: left;
 }

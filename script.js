@@ -1,14 +1,17 @@
 $(document).ready(function(){
-
+    
     $("#searchButton").on("click", function(event){
         event.preventDefault();
          
         var city = $("#city").val().trim();
+
+        $("#city").val("");
         
         var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + "&APPID=e1a3479820563a2c503617a91d1ec1d3";
         //local storage
         localStorage.setItem("city", city);
         console.log(localStorage);
+        $(".listCityHistory").val(localStorage.getItem(city));
 
         $.ajax({
             url: queryURL,
@@ -20,6 +23,7 @@ $(document).ready(function(){
           var cityName = (response.name);
           $("#cityName").html(cityName);
           console.log(cityName);
+          
           
           var icon = (response.weather[0].icon);
           $("#icon").html("<img src='http://openweathermap.org/img/w/" + icon + ".png' alt='Icon depicting current weather.'>")
@@ -34,8 +38,10 @@ $(document).ready(function(){
           $("#wind").html("Wind Speed: " + wind + " mph");
 
         })
-     forecast(city);   
-    })
+     forecast(city); 
+     
+    });
+    
     //function created for the five day forecast
     function forecast(searchCity){
         var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchCity + "&APPID=e1a3479820563a2c503617a91d1ec1d3&units=imperial&cnt=5";
@@ -58,7 +64,7 @@ $(document).ready(function(){
                 var p1 = $("<p>").addClass("card-text").text("Temp: " + forecastArr[i].main.temp_max + "F"); //adding a paragraph which will display the temperature in F
                 var p2 = $("<p>").addClass("card-text").text("Wind Speed: " + forecastArr[i].wind.speed + "MPH"); //adding a second paragraph which will display the wind speed in mph
 
-                //
+
                 col.append(card.append(body.append(title, img, p1, p2)));
                 $("#fiveDayForecast").append(col);
             }
