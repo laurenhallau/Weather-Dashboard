@@ -1,5 +1,9 @@
 $(document).ready(function(){
     
+    var historyArr = [];        
+    var APIKey = "&APPID=e1a3479820563a2c503617a91d1ec1d3";
+
+
     $("#searchButton").on("click", function(event){
         event.preventDefault();
          
@@ -7,18 +11,34 @@ $(document).ready(function(){
 
         $("#city").val("");
         
-        var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + "&APPID=e1a3479820563a2c503617a91d1ec1d3";
-        //local storage
-        localStorage.setItem("city", city);
-        console.log(localStorage);
-        $(".listCityHistory").html(city);
+        forecast(city);
+        searchWeather(city);
 
+        historyArr.push(city);
+        
+        //local storage
+        localStorage.setItem("city", historyArr);
+        console.log(localStorage);
+    
+
+    $(".listCityHistory").on("click", "li", function() {
+        forecast($(this).text());
+    });
+    
+    function makeRow(text) {
+        var li = $("<li>").addClass("list-group-item list-group-item-action").text(text);
+        $(".listCityHistory").append(li);
+    }
+//function for the current weather 
+    function searchWeather(city) {
+        
         $.ajax({
-            url: queryURL,
+            url: "http://api.openweathermap.org/data/2.5/weather?q=" + city + APIKey,
             method: "GET"
         }).then(function(response){
           console.log(response);
-
+            makeRow(city);
+            
           //creating variables for each output from javascript object
           var cityName = (response.name);
           $("#cityName").html(cityName);
@@ -29,7 +49,7 @@ $(document).ready(function(){
           $("#icon").html("<img src='http://openweathermap.org/img/w/" + icon + ".png' alt='Icon depicting current weather.'>")
           
           var temp = Math.round(response.main.temp);
-          $("#temp").html("Local temp: " + temp + "&deg; F");
+          $("#temp").html("Local temp: " + temp + " &deg;F");
 
           var humidity = Math.round(response.main.humidity);
           $("#humidity").html("Humidity: " + humidity + "%");
@@ -38,13 +58,13 @@ $(document).ready(function(){
           $("#wind").html("Wind Speed: " + wind + " mph");
 
         })
-     forecast(city); 
+      
      
-    });
+    }});
     
     //function created for the five day forecast
     function forecast(searchCity){
-        var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchCity + "&APPID=e1a3479820563a2c503617a91d1ec1d3&units=imperial&cnt=5";
+        var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchCity + APIKey + "&units=imperial&cnt=5";
         $.ajax({
             type: "GET",
             url: queryURL,
@@ -70,4 +90,5 @@ $(document).ready(function(){
             }
         })
     }
+    
 });
