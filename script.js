@@ -69,7 +69,7 @@ $(document).ready(function(){
             type: "GET",
             url: queryURL,
         }).then(function(response){
-            $("#fiveDayForecast").html("<h4>5-Day Forecast: ").append(this);
+            $("#fiveDayForecast").html("5-Day:").append(this);
             var forecastArr = response.list;
             for (let i = 0; i < forecastArr.length; i++) {
                 console.log("test", forecastArr[i]);
@@ -79,7 +79,7 @@ $(document).ready(function(){
                 var body = $("<div>").addClass("card-body text-secondary"); //body of the card
 
                 var title = $("<h4>").addClass("card-title").text(new Date(forecastArr[i].dt_txt).toLocaleDateString()); //this line is creating a new title with the text being dynamic, pulling in the date based off of the api
-                var img = $("<img>").addClass("src", "http://openweathermap.org/img/w/" + forecastArr[i].weather[0].icon); //adding an image with a link source of openweather 
+                var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + forecastArr[i].weather[0].icon + ".png"); //adding an image with a link source of openweather 
 
                 var p1 = $("<p>").addClass("card-text").text("Temp: " + forecastArr[i].main.temp_max + "F"); //adding a paragraph which will display the temperature in F
                 var p2 = $("<p>").addClass("card-text").text("Wind Speed: " + forecastArr[i].wind.speed + "MPH"); //adding a second paragraph which will display the wind speed in mph
