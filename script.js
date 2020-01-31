@@ -69,11 +69,11 @@ $(document).ready(function(){
             type: "GET",
             url: queryURL,
         }).then(function(response){
-            
+            $("#fiveDayForecast").html("<h4>5-Day Forecast: ").append(this);
             var forecastArr = response.list;
             for (let i = 0; i < forecastArr.length; i++) {
                 console.log("test", forecastArr[i]);
-            //create a var called col=div add a class
+            
                 var col = $("<div>").addClass("col-md-2");
                 var card = $("<div>").addClass("card g-light mb-3"); //creating a card to house the results
                 var body = $("<div>").addClass("card-body text-secondary"); //body of the card
