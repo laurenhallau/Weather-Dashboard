@@ -11,7 +11,7 @@ $(document).ready(function(){
         //local storage
         localStorage.setItem("city", city);
         console.log(localStorage);
-        $(".listCityHistory").val(localStorage.getItem(city));
+        $(".listCityHistory").html(city);
 
         $.ajax({
             url: queryURL,
@@ -23,7 +23,7 @@ $(document).ready(function(){
           var cityName = (response.name);
           $("#cityName").html(cityName);
           console.log(cityName);
-          
+        
           
           var icon = (response.weather[0].icon);
           $("#icon").html("<img src='http://openweathermap.org/img/w/" + icon + ".png' alt='Icon depicting current weather.'>")
