@@ -1,34 +1,44 @@
+var historyArr = [];
 $(document).ready(function(){
     
-    var historyArr = [];        
+            
     var APIKey = "&APPID=e1a3479820563a2c503617a91d1ec1d3";
 
 
     $("#searchButton").on("click", function(event){
         event.preventDefault();
-         
         var city = $("#city").val().trim();
-
         $("#city").val("");
         
         forecast(city);
+
+
         searchWeather(city);
 
+        if (historyArr.indexOf(city) === -1) {
         historyArr.push(city);
-        
+            
+    }
         //local storage
         localStorage.setItem("city", historyArr);
         console.log(localStorage);
     
 
-    $(".listCityHistory").on("click", "li", function() {
-        forecast($(this).text());
+        $(".listCityHistory").on("click", "li", function() {
+            forecast($(this).text());
+            searchWeather($(this).text());
+
     });
     
     function makeRow(text) {
+
         var li = $("<li>").addClass("list-group-item list-group-item-action").text(text);
+
         $(".listCityHistory").append(li);
+  
+
     }
+
 //function for the current weather 
     function searchWeather(city) {
         
@@ -37,14 +47,15 @@ $(document).ready(function(){
             method: "GET"
         }).then(function(response){
           console.log(response);
+            
             makeRow(city);
             
           //creating variables for each output from javascript object
           var cityName = (response.name);
+
+
           $("#cityName").html(cityName);
           console.log(cityName);
-        
-          
           var icon = (response.weather[0].icon);
           $("#icon").html("<img src='http://openweathermap.org/img/w/" + icon + ".png' alt='Icon depicting current weather.'>")
           
@@ -60,7 +71,7 @@ $(document).ready(function(){
         })
       
      
-    }});
+    }});//end onclick search btn
     
     //function created for the five day forecast
     function forecast(searchCity){
