@@ -33,7 +33,7 @@ $(document).ready(function(){
     function searchWeather(city) {
         
         $.ajax({
-            url: "http://api.openweathermap.org/data/2.5/weather?q=" + city + APIKey,
+            url: "https://api.openweathermap.org/data/2.5/weather?q=" + city + APIKey,
             method: "GET"
         }).then(function(response){
           console.log(response);
@@ -64,7 +64,7 @@ $(document).ready(function(){
     
     //function created for the five day forecast
     function forecast(searchCity){
-        var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchCity + APIKey + "&units=imperial&cnt=5";
+        var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchCity + "&units=imperial&cnt=5" + APIKey;
         $.ajax({
             type: "GET",
             url: queryURL,
