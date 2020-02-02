@@ -1,4 +1,5 @@
 var historyArr = [];
+var city = $("#city").val().trim();
 $(document).ready(function(){
     
             
@@ -27,6 +28,7 @@ $(document).ready(function(){
         $(".listCityHistory").on("click", "li", function() {
             forecast($(this).text());
             searchWeather($(this).text());
+                
 
     });
     
@@ -41,7 +43,6 @@ $(document).ready(function(){
 
 //function for the current weather 
     function searchWeather(city) {
-        
         $.ajax({
             url: "https://api.openweathermap.org/data/2.5/weather?q=" + city + APIKey,
             method: "GET"
@@ -51,8 +52,7 @@ $(document).ready(function(){
             makeRow(city);
             
           //creating variables for each output from javascript object
-          var cityName = (response.name);
-
+          var cityName = (response.name);  
 
           $("#cityName").html(cityName);
           console.log(cityName);
