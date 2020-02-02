@@ -6,3 +6,4 @@ Homework #6: Server Side APIs
 ## Description
 This weather dashboard will return the current conditions, as well as the five-day forecast, based on user input. 
 
+![Screenshot](screenshot.png)
