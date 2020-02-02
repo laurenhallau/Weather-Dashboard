@@ -70,12 +70,13 @@ $(document).ready(function(){
 
         })
         //uv index call
-            $.ajax({
-                url: "https://api.openweathermap.org/data/2.5/uvi?lat=" + cityName.name.coord.lat + "&lon=" + cityName.name.coord.lon + APIKey,
-                method: "GET"
-            }).then(function(data) {
-                console.log(data);
-            })
+            // $.ajax({
+            //     url: "https://api.openweathermap.org/data/2.5/uvi?lat=" + cityName.name.coord.lat + "&lon=" + cityName.name.coord.lon + APIKey,
+            //     method: "GET"
+            // }).then(function(data) {
+            //     console.log(data);
+                
+            // })
      
     }});//end onclick search btn
     
