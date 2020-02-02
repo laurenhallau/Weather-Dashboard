@@ -15,7 +15,7 @@ $(document).ready(function(){
 
 
         searchWeather(city);
-
+//if history city is already on list, don't list again- NOT working for the on-click
         if (historyArr.indexOf(city) === -1) {
         historyArr.push(city);
             
@@ -69,7 +69,13 @@ $(document).ready(function(){
           $("#wind").html("Wind Speed: " + wind + " mph");
 
         })
-      
+        //uv index call
+            $.ajax({
+                url: "https://api.openweathermap.org/data/2.5/uvi?lat=" + cityName.name.coord.lat + "&lon=" + cityName.name.coord.lon + APIKey,
+                method: "GET"
+            }).then(function(data) {
+                console.log(data);
+            })
      
     }});//end onclick search btn
     
