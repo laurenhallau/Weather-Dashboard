@@ -82,7 +82,7 @@ $(document).ready(function(){
     
     //function created for the five day forecast
     function forecast(searchCity){
-        var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchCity + "&units=imperial&cnt=5" + APIKey;
+        var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchCity + "&units=imperial" + APIKey;
         $.ajax({
             type: "GET",
             url: queryURL,
@@ -90,8 +90,11 @@ $(document).ready(function(){
             $("#fiveDayForecast").html("5-Day:").append(this);
             var forecastArr = response.list;
             for (let i = 0; i < forecastArr.length; i++) {
-                console.log("test", forecastArr[i]);
-            
+                // console.log("test", forecastArr[i].dt_txt);
+                // console.log(new Date(forecastArr[i].dt_txt));
+                if (forecastArr[i].dt_txt.indexOf("15:00:00") !== -1) {
+                    console.log(new Date(forecastArr[i].dt_txt));
+                
                 var col = $("<div>").addClass("col-md-2");
                 var card = $("<div>").addClass("card g-light mb-3"); //creating a card to house the results
                 var body = $("<div>").addClass("card-body text-secondary"); //body of the card
@@ -106,6 +109,7 @@ $(document).ready(function(){
                 col.append(card.append(body.append(title, img, p1, p2)));
                 $("#fiveDayForecast").append(col);
             }
+        }
         })
     }
     
