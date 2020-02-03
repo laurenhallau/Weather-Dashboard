@@ -44,7 +44,7 @@ $(document).ready(function(){
 //function for the current weather 
     function searchWeather(city) {
         $.ajax({
-            url: "https://api.openweathermap.org/data/2.5/weather?q=" + city + APIKey,
+            url: "https://api.openweathermap.org/data/2.5/weather?q=" + city + APIKey + "&units=imperial",
             method: "GET"
         }).then(function(response){
           console.log(response);
@@ -58,7 +58,7 @@ $(document).ready(function(){
           console.log(cityName);
           var icon = (response.weather[0].icon);
           $("#icon").html("<img src='http://openweathermap.org/img/w/" + icon + ".png' alt='Icon depicting current weather.'>")
-          
+          console.log(response.main.temp);
           var temp = Math.round(response.main.temp);
           $("#temp").html("Local temp: " + temp + " &deg;F");
 

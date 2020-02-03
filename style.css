@@ -35,3 +35,6 @@
 #fiveDayForecast {
     float: left;
 }
+.list-group-item {
+    float: right;
+}
