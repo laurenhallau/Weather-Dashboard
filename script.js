@@ -1,8 +1,6 @@
-var historyArr = [];
-var city = $("#city").val().trim();
 $(document).ready(function(){
-    
-            
+    var historyArr = [];
+    var city = $("#city").val().trim();
     var APIKey = "&APPID=e1a3479820563a2c503617a91d1ec1d3";
 
 
@@ -12,18 +10,17 @@ $(document).ready(function(){
         $("#city").val("");
         
         forecast(city);
-
-
         searchWeather(city);
 //if history city is already on list, don't list again- NOT working for the on-click
         if (historyArr.indexOf(city) === -1) {
         historyArr.push(city);
+        makeRow(city);
             
     }
         //local storage
         localStorage.setItem("city", historyArr);
         console.log(localStorage);
-    
+})
 
         $(".listCityHistory").on("click", "li", function() {
             forecast($(this).text());
@@ -49,7 +46,7 @@ $(document).ready(function(){
         }).then(function(response){
           console.log(response);
             
-            makeRow(city);
+            // makeRow(city);
             
           //creating variables for each output from javascript object
           var cityName = (response.name);  
@@ -78,7 +75,7 @@ $(document).ready(function(){
                 
             // })
      
-    }});//end onclick search btn
+    };//end onclick search btn
     
     //function created for the five day forecast
     function forecast(searchCity){
