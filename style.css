@@ -31,10 +31,12 @@
 
 #cityHistoryColumn {
     float: left;
+    width: 50%;
 }
 #fiveDayForecast {
     float: left;
 }
 .list-group-item {
-    float: right;
+    width: 50px;
+    margin: auto;
 }

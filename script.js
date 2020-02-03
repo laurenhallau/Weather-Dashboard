@@ -25,8 +25,7 @@ $(document).ready(function(){
         $(".listCityHistory").on("click", "li", function() {
             forecast($(this).text());
             searchWeather($(this).text());
-                
-
+    
     });
     
     function makeRow(text) {
